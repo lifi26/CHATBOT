@@ -1,5 +1,4 @@
 //libraries
-//const { trainModel, predict } = require('./neuralNetwork');
 const express = require("express");
 const router = express.Router();
 const request = require("request");
@@ -118,12 +117,7 @@ async function receivedMessage(event) {
   if (messageText) {
     //send message to dialogflow
     console.log("MENSAJE DEL USUARIO: ", messageText);
-    // Aquí convierte el mensaje en un formato que tu modelo pueda usar
-   // const inputData = processInput(messageText); // Implementa esta función según tus necesidades
-   // const prediction = await predict(yourTrainedModel, inputData); // Asegúrate de tener un modelo entrenado
-    
-    // Envía la predicción como respuesta
-   // sendTextMessage(senderId, `Predicción de la red: ${prediction}`);
+   
     await sendToDialogFlow(senderId, messageText);
   } else if (messageAttachments) {
     handleMessageAttachments(messageAttachments, senderId);
